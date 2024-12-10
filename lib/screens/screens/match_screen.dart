@@ -129,11 +129,12 @@ class _MatchScreenState extends State<MatchScreen> {
           ),
           TorcidometroWidget(
             team1Name: team1Name,
+            team1Logo: team1Logo,
             team2Name: team2Name,
+            team2Logo: team2Logo,
           ),
         ],
       ),
     );
   }
 }
-
