@@ -68,6 +68,7 @@ class _MatchScreenState extends State<MatchScreen> {
         ),
         actions: [
           IconButton(
+            color: Colors.white,
             icon: const Icon(Icons.share),
             onPressed: () {},
           ),
