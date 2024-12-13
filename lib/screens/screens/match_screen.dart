@@ -1,20 +1,19 @@
 import 'package:flutter/material.dart';
-// Importa widgets personalizados utilizados na interface
+
 import 'package:torcidometro/widgets/widgets/tab_button.dart';
 import 'package:torcidometro/widgets/widgets/team_info.dart';
 import 'package:torcidometro/widgets/widgets/torcidometro_widget.dart';
-import 'package:torcidometro/screens/screens/edit_team_dialog.dart'; // Importa o diálogo de edição dos times
+import 'package:torcidometro/screens/screens/edit_team_dialog.dart'; 
 
-// Define a tela principal como um StatefulWidget para gerenciar mudanças de estado
 class MatchScreen extends StatefulWidget {
   const MatchScreen({super.key});
 
   @override
-  _MatchScreenState createState() => _MatchScreenState(); // Cria o estado associado à tela
+  _MatchScreenState createState() => _MatchScreenState(); 
 }
 
 class _MatchScreenState extends State<MatchScreen> {
-  // Define os nomes e logos iniciais dos times
+ 
   String team1Name = 'PSG';
   String team1Logo =
       'https://a.espncdn.com/i/teamlogos/soccer/500-dark/160.png';
@@ -23,17 +22,16 @@ class _MatchScreenState extends State<MatchScreen> {
   String team2Logo =
       'https://a.espncdn.com/combiner/i?img=/i/teamlogos/soccer/500/103.png';
 
-  // Função para editar as informações de um time
   void _editTeam(int teamIndex) {
-    final String initialName = teamIndex == 1 ? team1Name : team2Name; // Determina o nome inicial baseado no índice
-    final String initialLogo = teamIndex == 1 ? team1Logo : team2Logo; // Determina o logo inicial baseado no índice
+    final String initialName = teamIndex == 1 ? team1Name : team2Name;  
+    final String initialLogo = teamIndex == 1 ? team1Logo : team2Logo; 
 
     // Exibe o diálogo de edição
     showDialog(
       context: context,
       builder: (context) => EditTeamDialog(
-        initialName: initialName, // Passa o nome inicial ao diálogo
-        initialLogo: initialLogo, // Passa o logo inicial ao diálogo
+        initialName: initialName, 
+        initialLogo: initialLogo, 
         onSave: (newName, newLogo) {
           setState(() {
             // Atualiza o estado com os novos dados
@@ -53,77 +51,77 @@ class _MatchScreenState extends State<MatchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // Define a barra superior da aplicação
+     
       appBar: AppBar(
-        backgroundColor: Colors.blue, // Define a cor de fundo da AppBar
+        backgroundColor: Colors.blue, 
         leading: IconButton(
-          icon: const Icon(Icons.arrow_back), // Ícone de voltar
-          onPressed: () {}, // Adicionar funcionalidade de navegação
+          icon: const Icon(Icons.arrow_back), 
+          onPressed: () {}, 
         ),
         title: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start, // Alinha o texto à esquerda
+          crossAxisAlignment: CrossAxisAlignment.start, 
           children: [
             Text(
-              'Champions League', // Título principal da tela
+              'Champions League', 
               style: TextStyle(fontSize: 20, color: Colors.white),
             ),
             Text(
-              'PSG x Milan', // Subtítulo com os nomes dos times
+              'PSG x Milan', 
               style: TextStyle(fontSize: 16, color: Colors.white),
             ),
           ],
         ),
         actions: [
           IconButton(
-            color: Colors.white, // Ícone de compartilhar
+            color: Colors.white, 
             icon: const Icon(Icons.share),
-            onPressed: () {}, // Adicionar funcionalidade de compartilhamento
+            onPressed: () {}, 
           ),
         ],
       ),
       body: Column(
         children: [
-          // Barra de navegação entre abas
+          
           Container(
-            color: Colors.blue, // Fundo azul para destacar a barra
+            color: Colors.blue, 
             child: const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround, // Espaçamento uniforme entre os botões
+              mainAxisAlignment: MainAxisAlignment.spaceAround, 
               children: [
-                TabButton(label: 'JOGO', isActive: true), // Aba ativa para "JOGO"
-                TabButton(label: 'COMENTÁRIOS', isActive: false), // Aba inativa para "COMENTÁRIOS"
-                TabButton(label: 'MÍDIAS', isActive: false), // Aba inativa para "MÍDIAS"
+                TabButton(label: 'JOGO', isActive: true), 
+                TabButton(label: 'COMENTÁRIOS', isActive: false), 
+                TabButton(label: 'MÍDIAS', isActive: false), 
               ],
             ),
           ),
           const Padding(
-            padding: EdgeInsets.symmetric(vertical: 10), // Espaçamento vertical
+            padding: EdgeInsets.symmetric(vertical: 10), 
             child: Text(
-              'GRUPO A x GRUPO B', // Texto indicando os grupos dos times
+              'GRUPO A x GRUPO B', 
               style: TextStyle(fontSize: 16),
             ),
           ),
-          // Container exibindo informações dos times
+          
           Padding(
-            padding: const EdgeInsets.all(8.0), // Espaçamento ao redor do container
+            padding: const EdgeInsets.all(8.0), 
             child: Container(
               decoration: BoxDecoration(
-                color: Colors.white, // Fundo branco
-                borderRadius: BorderRadius.circular(10), // Bordas arredondadas
+                color: Colors.white, 
+                borderRadius: BorderRadius.circular(10), 
                 boxShadow: [
                   BoxShadow(
-                    color: Colors.grey.shade300, // Cor da sombra
-                    blurRadius: 5, // Intensidade do desfoque
-                    offset: const Offset(0, 3), // Direção da sombra
+                    color: Colors.grey.shade300, 
+                    blurRadius: 5, 
+                    offset: const Offset(0, 3), 
                   ),
                 ],
               ),
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16), // Espaçamento interno
+              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16), 
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround, // Espaçamento uniforme entre os elementos
+                mainAxisAlignment: MainAxisAlignment.spaceAround, 
                 children: [
                   GestureDetector(
                     onTap: () => _editTeam(1), // Editar informações do time 1 ao clicar
-                    child: TeamInfo(teamName: team1Name, imageUrl: team1Logo), // Exibe informações do time 1
+                    child: TeamInfo(teamName: team1Name, imageUrl: team1Logo), 
                   ),
                   const Text(
                     ':', // Separador entre os dois times
@@ -131,7 +129,7 @@ class _MatchScreenState extends State<MatchScreen> {
                   ),
                   GestureDetector(
                     onTap: () => _editTeam(2), // Editar informações do time 2 ao clicar
-                    child: TeamInfo(teamName: team2Name, imageUrl: team2Logo), // Exibe informações do time 2
+                    child: TeamInfo(teamName: team2Name, imageUrl: team2Logo), 
                   ),
                 ],
               ),
@@ -139,10 +137,10 @@ class _MatchScreenState extends State<MatchScreen> {
           ),
           // Componente do Torcidômetro
           TorcidometroWidget(
-            team1Name: team1Name, // Passa o nome do time 1 para o widget
-            team1Logo: team1Logo, // Passa o logo do time 1 para o widget
-            team2Name: team2Name, // Passa o nome do time 2 para o widget
-            team2Logo: team2Logo, // Passa o logo do time 2 para o widget
+            team1Name: team1Name, 
+            team1Logo: team1Logo, 
+            team2Name: team2Name, 
+            team2Logo: team2Logo, 
           ),
         ],
       ),
